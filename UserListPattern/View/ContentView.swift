@@ -52,11 +52,20 @@ struct ContentView: View {
     private func togglePattern() {
         if viewPattern is UserController {
             viewPattern = mvvmViewModel
-        } else if viewPattern is UserViewModel {
-            viewPattern = mvpPresenter
         } else {
             viewPattern = mvcController
         }
+        
+        
+        /*
+         
+         else if viewPattern is UserViewModel {
+             viewPattern = mvpPresenter
+         } else {
+             viewPattern = mvcController
+         }
+         
+         */
         viewPattern.fetchUsers()
     }
 }
