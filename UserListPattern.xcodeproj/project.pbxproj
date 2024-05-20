@@ -22,6 +22,7 @@
 		D8CCE2E12BF8594B004D0EE6 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CCE2E02BF8594B004D0EE6 /* UserProtocol.swift */; };
 		D8CCE2E32BF85E05004D0EE6 /* UserListPatternApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CCE2E22BF85E05004D0EE6 /* UserListPatternApp.swift */; };
 		D8CCE2E62BF862CD004D0EE6 /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CCE2E52BF862CD004D0EE6 /* UserPresenter.swift */; };
+		D8CCE3022BFB2751004D0EE6 /* ContentViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CCE3012BFB2751004D0EE6 /* ContentViewUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		D8CCE2E02BF8594B004D0EE6 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
 		D8CCE2E22BF85E05004D0EE6 /* UserListPatternApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListPatternApp.swift; sourceTree = "<group>"; };
 		D8CCE2E52BF862CD004D0EE6 /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
+		D8CCE3012BFB2751004D0EE6 /* ContentViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				D8CCE2BF2BF7A093004D0EE6 /* UserListPatternUITests.swift */,
+				D8CCE3012BFB2751004D0EE6 /* ContentViewUITests.swift */,
 				D8CCE2C12BF7A093004D0EE6 /* UserListPatternUITestsLaunchTests.swift */,
 			);
 			path = UserListPatternUITests;
@@ -368,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8CCE3022BFB2751004D0EE6 /* ContentViewUITests.swift in Sources */,
 				D8CCE2C22BF7A093004D0EE6 /* UserListPatternUITestsLaunchTests.swift in Sources */,
 				D8CCE2C02BF7A093004D0EE6 /* UserListPatternUITests.swift in Sources */,
 			);

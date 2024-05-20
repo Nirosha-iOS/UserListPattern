@@ -9,6 +9,9 @@
 import Foundation
 import Combine
 
+import Foundation
+import Combine
+
 class UserViewModel: ObservableObject, UserProtocol {
     @Published var users: [User] = []
     @Published var errorMessage: String?
@@ -17,17 +20,18 @@ class UserViewModel: ObservableObject, UserProtocol {
     private var cancellables = Set<AnyCancellable>()
 
     func fetchUsers() {
-        userService.fetchUsers { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let users):
-                    self?.users = users
+        userService.fetchUsers()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
                 case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
+                    self.errorMessage = error.localizedDescription
                 }
-            }
-        }
+            }, receiveValue: { users in
+                self.users = users
+            })
+            .store(in: &cancellables)
     }
 }
-
 

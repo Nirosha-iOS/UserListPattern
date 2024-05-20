@@ -7,30 +7,20 @@
 
 
 import Foundation
+import Combine
+import Foundation
+import Combine
 
 class UserService {
-    func fetchUsers(completion: @escaping (Result<[User], Error>) -> Void) {
+    func fetchUsers() -> AnyPublisher<[User], Error> {
         let url = URL(string: "https://gorest.co.in/public/v2/users")!
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data"])
-                completion(.failure(error))
-                return
-            }
-            
-            do {
-                let users = try JSONDecoder().decode([User].self, from: data)
-                completion(.success(users))
-            } catch {
-                completion(.failure(error))
-            }
-        }.resume()
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: [User].self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
+
 
