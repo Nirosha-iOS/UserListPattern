@@ -1,0 +1,46 @@
+name: iOS CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7'
+
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Install CocoaPods
+      run: |
+        pod install
+      working-directory: ./UserListPattern
+
+    - name: Set up Xcode
+      run: |
+        sudo xcode-select --switch /Applications/Xcode_12.5.app
+        sudo xcodebuild -license accept
+
+    - name: Build and Test
+      run: |
+        xcodebuild -workspace UserListPattern.xcworkspace \
+                    -scheme UserListPattern \
+                    -sdk iphonesimulator \
+                    -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.5' \
+                    clean build test | xcpretty
+      env:
+        XCODE_WORKSPACE: UserListPattern.xcworkspace
+        XCODE_SCHEME: UserListPattern
